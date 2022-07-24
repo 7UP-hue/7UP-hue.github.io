@@ -7,7 +7,13 @@
     Blog:7UP-hue
   </title>
   
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="/7UP-hue/css/style.css">
+
+  
+<link rel="stylesheet" href="/7UP-hue/css/prism.css">
+ 
+  
+<script src="/7UP-hue/js/prism.js"></script>
 
 <meta name="generator" content="Hexo 5.4.2"></head>
 
@@ -20,10 +26,11 @@
       <div id="stars2"></div>
       <div id="stars3"></div>
     </div>
-    <div class="container">    
-      <header class="header">
+    <div class="container">
+      <div class="layout-header">
+        <header class="header">
   <div class="title">
-    <a href="./" class="logo">
+    <a href="/7UP-hue/" class="logo">
       Blog:7UP-hue
     </a>
   </div>
@@ -31,128 +38,285 @@
     <ul class="menu">
       
         <li class="menu-item">
-          <a href="./" class="menu-item-link">主页</a>
+          <a href="/7UP-hue/" class="menu-item-link">主页</a>
         </li>
       
         <li class="menu-item">
-          <a href="./archives" class="menu-item-link">归档</a>
+          <a href="/7UP-hue/archives" class="menu-item-link">归档</a>
         </li>
       
         <li class="menu-item">
-          <a href="./categories" class="menu-item-link">分类</a>
+          <a href="/7UP-hue/categories" class="menu-item-link">分类</a>
         </li>
       
         <li class="menu-item">
-          <a href="./tags/" class="menu-item-link">标签</a>
+          <a href="/7UP-hue/tags" class="menu-item-link">标签</a>
         </li>
       
         <li class="menu-item">
-          <a href="./about" class="menu-item-link">关于</a>
+          <a href="/7UP-hue/about" class="menu-item-link">关于</a>
         </li>
        
     </ul>
   </nav>
   <div></div>
 </header>
-    
-      <section class="posts">
+
+      </div>
+      <div class="layout-body">
+        <div class="show-sth">
+  <div class="show-title">
+    <span>
+      Live a good life meet slowly
+    </span>
+    <br>
+    <!-- <span>
+      like summer flowers and death like autumn leaves
+    </span> -->
+  </div>
+</div>
+<section class="posts">
   
     <article class="post">
-      <div class="post-title">
-        <a class="post-title-link" href="./2022/07/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%86%99%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98/">
-          从零开始写一个Hexo主题
-        </a>
-      </div>
-      <div class="post-content">
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>写作目的：<br>作为一名前端学习者，想试一下自己写一个Hexo主题<br>在这里我将记录自己的学习过程以及遇到的问题和解决方式<br>好像我最初搭建这个博客平台的目的就不是写博客，而是为了做一个自己的、好看的网站，但是在网上看了一圈，大部分博客网站都是运用各种现有的主题制作的，感觉没有很大的学习价值，于是我决定，自己也学着写一个主题</p>
-<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>在<code>thems</code>目录下新建一个<code>theme-name</code>(你的主题名字）文件夹，一个主题主要有以下结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml  #主题的配置文件</span><br><span class="line">├── languages    #语言文件夹</span><br><span class="line">├── layout       #布局文件夹，用来存放主题的模板文件</span><br><span class="line">├── scripts      #脚本文件夹</span><br><span class="line">└── source       #资源文件夹，除了模板外的Asset，例如CSS、JS文件等</span><br></pre></td></tr></table></figure>
-<h4 id="结构模板"><a href="#结构模板" class="headerlink" title="结构模板"></a>结构模板</h4><p>大部分博客网站由：顶部导航栏、中间内容区域以及底部信息展示区域三大部分组成。因此我们在这里先设置我们网站的头部以及底部样式。<br>在<code>layout</code>目录下新建<code>_partial</code>目录，添加<code>head.ejs</code>，<code>header.ejs</code>以及<code>fonter.ejs</code>文件</p>
-<h5 id="layout-partial-head-ejs代码"><a href="#layout-partial-head-ejs代码" class="headerlink" title="layout/_partial/head.ejs代码:"></a><code>layout/_partial/head.ejs</code>代码:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</span><br><span class="line">  &lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; name=&quot;viewport&quot;&gt;</span><br><span class="line">  &lt;title&gt;标题&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="layout-partial-header-ejs代码"><a href="#layout-partial-header-ejs代码" class="headerlink" title="layout/_partial/header.ejs代码:"></a><code>layout/_partial/header.ejs</code>代码:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;header&gt;我是导航栏&lt;/header&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="layout-partial-footer-ejs代码："><a href="#layout-partial-footer-ejs代码：" class="headerlink" title="layout/_partial/footer.ejs代码："></a><code>layout/_partial/footer.ejs</code>代码：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;footer&gt;我是底部信息&lt;/footer&gt;</span><br></pre></td></tr></table></figure>
-<p>在<code>layout</code>中创建<code>layout.ejs</code>，<code>layout.ejs</code>文件是通用的布局文件模板，我们在后面新增的<code>ejs</code>文件都会继承<code>layout.ejs</code>，并将其内容填充到<code>body</code>中。</p>
-<h5 id="layout-layout-ejs代码："><a href="#layout-layout-ejs代码：" class="headerlink" title="layout/layout.ejs代码："></a><code>layout/layout.ejs</code>代码：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;%- partial(&#x27;_partial/head&#x27;) %&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;%- partial(&#x27;_partial/header&#x27;) %&gt;</span><br><span class="line">      &lt;%- body %&gt;</span><br><span class="line">      &lt;%- partial(&#x27;_partial/footer&#x27;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt; </span><br></pre></td></tr></table></figure>
-<h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><p>首页是我们网站加载完毕后的第一个页面<br>在<code>layout</code>中创建<code>index.ejs</code>文件,<code>index.ejs</code>将会继承<code>layout.ejs</code>布局模板生成HTML文件。</p>
-<h5 id="layout-index-ejs代码："><a href="#layout-index-ejs代码：" class="headerlink" title="layout/index.ejs代码："></a><code>layout/index.ejs</code>代码：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;Hello World&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-<p>将这些文件全部添加完后我们的网站将会是这样<br><img src="/source/images/begin.png" alt="img"></p>
-<h4 id="编写导航栏和底部信息"><a href="#编写导航栏和底部信息" class="headerlink" title="编写导航栏和底部信息"></a>编写导航栏和底部信息</h4><h5 id="编写layout-partial-head-ejs信息"><a href="#编写layout-partial-head-ejs信息" class="headerlink" title="编写layout/_partial/head.ejs信息"></a>编写<code>layout/_partial/head.ejs</code>信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;    </span><br><span class="line">  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;    </span><br><span class="line">  &lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; name=&quot;viewport&quot;&gt;    </span><br><span class="line">  &lt;title&gt;</span><br><span class="line">    &lt;%= config.title %&gt;</span><br><span class="line">  &lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<p>使用了<code>config</code>全局变量，该变量包含的是站点配置（即站点根目录下<code>_config.yml</code>中的配置）。<br>除此之外还有<code>theme</code>变量，该变量是主题配置（即主题目录下<code>_config.yml</code>中的配置）。<br>其他配置参照<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/variables">Hexo</a>文档</p>
-<h5 id="编写导航栏部分，layout-partial-header-ejs"><a href="#编写导航栏部分，layout-partial-header-ejs" class="headerlink" title="编写导航栏部分，layout/_partial/header.ejs"></a>编写导航栏部分，<code>layout/_partial/header.ejs</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;header class=&quot;header&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;title&quot;&gt;</span><br><span class="line">    &lt;a href=&quot;&lt;%= url_for() %&gt;&quot; class=&quot;logo&quot;&gt;</span><br><span class="line">      &lt;%= config.title %&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;nav class=&quot;navbar&quot;&gt;</span><br><span class="line">    &lt;ul class=&quot;menu&quot;&gt;</span><br><span class="line">      &lt;% for (name in theme.menu) &#123; %&gt;</span><br><span class="line">        &lt;li class=&quot;menu-item&quot;&gt;</span><br><span class="line">          &lt;a href=&quot;&lt;%- url_for(theme.menu[name]) %&gt;&quot; class=&quot;menu-item-link&quot;&gt;&lt;%= name %&gt;&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;% &#125; %&gt; </span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">&lt;/header&gt;</span><br></pre></td></tr></table></figure>
-<p>在这里我们使用<code>&lt;% for (name in theme.menu) &#123; %&gt;</code>遍历我们在<code>_config.yml</code>中设置的menu信息</p>
-<h5 id="编辑底部信息部分，layout-partial-footer-ejs"><a href="#编辑底部信息部分，layout-partial-footer-ejs" class="headerlink" title="编辑底部信息部分，layout/_partial/footer.ejs"></a>编辑底部信息部分，<code>layout/_partial/footer.ejs</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;footer&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    Theme is </span><br><span class="line">    &lt;a href=&quot;/&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">      Theme-name</span><br><span class="line">    &lt;/a&gt; </span><br><span class="line">    by </span><br><span class="line">    &lt;a href=&quot;&lt;%= config.url %&gt;&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">      &lt;%= config.author %&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">  &lt;/p&gt;    </span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    Powered by </span><br><span class="line">    &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;</span><br><span class="line">      hexo</span><br><span class="line">    &lt;/a&gt; </span><br><span class="line">    &amp;copy; &lt;%- date(Date.now(), &#x27;YYYY&#x27;) %&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">&lt;/footer&gt;</span><br></pre></td></tr></table></figure>
-<p>注意这里的<code>Theme-name</code>需要更换为你的主题名字</p>
-<p>到这里我们就得到了一个包含导航栏和底部信息的简单页面<br><img src="/source/images/three.png" alt="img"></p>
-<h4 id="文章列表"><a href="#文章列表" class="headerlink" title="文章列表"></a>文章列表</h4><p>接下来完善首页，使其能显示文章列表。<br>这里我们要用到<code>page</code>变量的<code>posts</code>属性拿到文章的数据集合。</p>
-<h5 id="编辑index-ejs文件"><a href="#编辑index-ejs文件" class="headerlink" title="编辑index.ejs文件"></a>编辑<code>index.ejs</code>文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;section class=&quot;posts&quot;&gt;</span><br><span class="line">  &lt;% page.posts.each(function (post) &#123; %&gt;</span><br><span class="line">    &lt;article class=&quot;post&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;post-title&quot;&gt;</span><br><span class="line">        &lt;a class=&quot;post-title-link&quot; href=&quot;&lt;%- url_for(post.path) %&gt;&quot;&gt;</span><br><span class="line">          &lt;%= post.title %&gt;</span><br><span class="line">        &lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;post-content&quot;&gt;</span><br><span class="line">        &lt;%- post.content %&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;post-meta&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;post-time&quot;&gt;</span><br><span class="line">          &lt;%- date(post.date, &quot;YYYY-MM-DD&quot;) %&gt;</span><br><span class="line">        &lt;/span&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/article&gt;</span><br><span class="line">  &lt;% &#125;) %&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h4><p>到这里，我们的框架以及大致内容显示已经完成了，但是由于没有设置样式，现在我们的网站还很丑。于是终于到了最激动人心的一刻了！我们开始添加css样式文件来美化我们的页面。<br>我们只需要将样式文件放到<code>css</code>文件夹中。Hexo在生成文件时会将<code>source</code>中的文件赋值到生产的<code>public</code>文件夹中，并将<code>styl</code>文件编译成<code>css</code>文件。<br>在<code>source</code>文件夹中新建<code>css</code>文件夹，在 <code>css</code> 文件夹中创建 <code>style.styl</code>，编写一些基础的样式，并把所有样式 <code>import</code>到这个文件。所以最终编译之后只会有 <code>style.css</code> 一个文件。创建<code>_partial/header.styl</code> 与 <code>_partial/index.styl</code> 存放页面导航以及文章的样式，并且在 <code>style.styl</code> 中 <code>import</code> 这两个文件。</p>
-<h5 id="在style-styl-中-import"><a href="#在style-styl-中-import" class="headerlink" title="在style.styl 中 import"></a>在<code>style.styl</code> 中 <code>import</code></h5><p>接下来我们只需要编辑样式文件，自由发挥即可。<br>示例：</p>
-<h5 id="partial-header-styl："><a href="#partial-header-styl：" class="headerlink" title="_partial/header.styl："></a><code>_partial/header.styl</code>：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.header &#123;</span><br><span class="line">  margin-top: 30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="partial-index-styl："><a href="#partial-index-styl：" class="headerlink" title="_partial/index.styl："></a><code>_partial/index.styl</code>：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//代码</span><br></pre></td></tr></table></figure>
-<h5 id="style-styl："><a href="#style-styl：" class="headerlink" title="style.styl："></a><code>style.styl</code>：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;_partial/header&quot;;</span><br><span class="line">@import &quot;_partial/index&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>最后我们需要将样式文件添加到页面中，这里使用了辅助函数<code>css()</code></p>
-<h5 id="编辑layout-partial-head-ejs："><a href="#编辑layout-partial-head-ejs：" class="headerlink" title="编辑layout/_partial/head.ejs："></a>编辑<code>layout/_partial/head.ejs</code>：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;    </span><br><span class="line">  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;    </span><br><span class="line">  &lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; name=&quot;viewport&quot;&gt;    </span><br><span class="line">  &lt;title&gt;</span><br><span class="line">    &lt;%= config.title %&gt;</span><br><span class="line">  &lt;/title&gt;</span><br><span class="line">  &lt;!-- 添加这一行即可 --&gt;</span><br><span class="line">  &lt;%- css(&#x27;css/style.styl&#x27;) %&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-
-
-
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B/">
+            JavaScript基本包装类型
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B/">
+            阅读全文>
+          </a>
+        </span>
       </div>
       <div class="post-meta">
         <span class="post-time">
-          2022-07-22
+          2022-07-24
         </span>
       </div>
-    </article>
-  
-    <article class="post">
-      <div class="post-title">
-        <a class="post-title-link" href="./2022/07/22/%E5%88%86%E7%B1%BB%E6%B5%8B%E8%AF%95/">
-          分类测试
-        </a>
+      <div class="post-excerpt">
+        <p>我对JavaScript对象的一些简单理解</p>
       </div>
-      <div class="post-content">
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
         
       </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E4%BA%8B%E4%BB%B6/">
+            JavaScript事件
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E4%BA%8B%E4%BB%B6/">
+            阅读全文>
+          </a>
+        </span>
+      </div>
       <div class="post-meta">
         <span class="post-time">
-          2022-07-22
+          2022-07-24
         </span>
+      </div>
+      <div class="post-excerpt">
+        <p>我对JavaScript对象的一些简单理解</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
+        
       </div>
     </article>
   
     <article class="post">
-      <div class="post-title">
-        <a class="post-title-link" href="./2022/07/22/hello-world/">
-          Hello woeo
-        </a>
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%87%BD%E6%95%B0/">
+            JavaScript函数
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%87%BD%E6%95%B0/">
+            阅读全文>
+          </a>
+        </span>
       </div>
-      <div class="post-content">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+      <div class="post-meta">
+        <span class="post-time">
+          2022-07-24
+        </span>
+      </div>
+      <div class="post-excerpt">
+        <p>我对JavaScript对象的一些简单理解</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%AF%B9%E8%B1%A1/">
+            JavaScript对象
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/24/JavaScript%E5%AF%B9%E8%B1%A1/">
+            阅读全文>
+          </a>
+        </span>
+      </div>
+      <div class="post-meta">
+        <span class="post-time">
+          2022-07-24
+        </span>
+      </div>
+      <div class="post-excerpt">
+        <p>我对JavaScript对象的一些简单理解</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%86%99%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98/">
+            从零开始写一个Hexo主题
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%86%99%E4%B8%80%E4%B8%AAHexo%E4%B8%BB%E9%A2%98/">
+            阅读全文>
+          </a>
+        </span>
       </div>
       <div class="post-meta">
         <span class="post-time">
           2022-07-22
         </span>
       </div>
+      <div class="post-excerpt">
+        <p>介绍：从零开始写一个hexo主题的步骤</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            Hexo
+          </span>
+        
+          <span class="tag-items">
+            CSS
+          </span>
+        
+      </div>
     </article>
   
-</section>    
-      <footer class="footer">
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/07/22/hello-world/">
+            Hello woeo
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/07/22/hello-world/">
+            阅读全文>
+          </a>
+        </span>
+      </div>
+      <div class="post-meta">
+        <span class="post-time">
+          2022-07-22
+        </span>
+      </div>
+      <div class="post-excerpt">
+        
+      </div>
+      <div class="page-tags">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2022/06/24/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E8%AF%A6%E8%A7%A3/">
+            原型与原型链详解
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2022/06/24/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E8%AF%A6%E8%A7%A3/">
+            阅读全文>
+          </a>
+        </span>
+      </div>
+      <div class="post-meta">
+        <span class="post-time">
+          2022-06-24
+        </span>
+      </div>
+      <div class="post-excerpt">
+        <p>我对原型与原型链的一些简单理解</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/7UP-hue/2021/07/22/%E5%88%86%E7%B1%BB%E6%B5%8B%E8%AF%95/">
+            分类测试
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/7UP-hue/2021/07/22/%E5%88%86%E7%B1%BB%E6%B5%8B%E8%AF%95/">
+            阅读全文>
+          </a>
+        </span>
+      </div>
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-22
+        </span>
+      </div>
+      <div class="post-excerpt">
+        
+      </div>
+      <div class="page-tags">
+        
+      </div>
+    </article>
+  
+</section>
+      </div>
+      <div class="layout-footer">
+        <footer class="footer">
   <div class="f-center">
     <p class="author">
       Theme is 
@@ -160,7 +324,7 @@
         light
       </a> 
       by 
-      <a href="https://7UP-hue.github.io" target="_blank" class="footer-link">
+      <a href="https://github.com/7UP-hue" target="_blank" class="footer-link">
         7UP-hue
       </a>
     </p>    
@@ -172,7 +336,8 @@
       &copy; 2022
     </p>
   </div>
-</footer>    
+</footer>
+      </div>
     </div>
   </body>
 </html>

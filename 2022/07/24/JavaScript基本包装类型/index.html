@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">    
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">    
+  <title>
+    Blog:7UP-hue
+  </title>
+  
+<link rel="stylesheet" href="/7UP-hue/css/style.css">
+
+  
+<link rel="stylesheet" href="/7UP-hue/css/prism.css">
+ 
+  
+<script src="/7UP-hue/js/prism.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+  <body>
+    <div class="w-bg">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+    </div>
+    <div class="container">
+      <div class="layout-header">
+        <header class="header">
+  <div class="title">
+    <a href="/7UP-hue/" class="logo">
+      Blog:7UP-hue
+    </a>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/7UP-hue/" class="menu-item-link">主页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/7UP-hue/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/7UP-hue/categories" class="menu-item-link">分类</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/7UP-hue/tags" class="menu-item-link">标签</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/7UP-hue/about" class="menu-item-link">关于</a>
+        </li>
+       
+    </ul>
+  </nav>
+  <div></div>
+</header>
+
+      </div>
+      <div class="layout-body">
+        <article class="post posts">
+  <div class="post-title">
+    <h2 class="title">
+      JavaScript基本包装类型
+    </h2>
+  </div>
+  <div class="post-meta">
+    <span class="post-time">
+      2022-07-24
+    </span>
+  </div>
+  <div class="post-content">
+    <p>我对JavaScript对象的一些简单理解</p>
+<span id="more"></span>
+<h3 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h3><p>ES提供了3个特殊的引用类型：Boolean、Number和String。这些类型与其他的引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token string">"shjoeih yowijpog"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//按理说s1是一个基本数据类型，是没有方法的</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在读取一个基本类型值时，后台都会自动完成下列处理</p>
+<ol>
+<li>创建String类型的一个实例</li>
+<li>在实例上调用指定的方法</li>
+<li>销毁这个实例</li>
+</ol>
+<p>可以将以上三个步骤想想成执行了下面的代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"shjoeih yowijpog"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+s1 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>引用类型和基本包装类型的主要区别就是对象的生存期。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前那一段时间都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token string">"hsoeith w"</span><span class="token punctuation">;</span>
+s1<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>s1<span class="token punctuation">.</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>第二行创建的String对象在执行第三行代码时以及被销毁了。</p>
+
+  </div>
+</article>
+
+      </div>
+      <div class="layout-footer">
+        <footer class="footer">
+  <div class="f-center">
+    <p class="author">
+      Theme is 
+      <a href="/" target="_blank" class="footer-link">
+        light
+      </a> 
+      by 
+      <a href="https://github.com/7UP-hue" target="_blank" class="footer-link">
+        7UP-hue
+      </a>
+    </p>    
+    <p class="powered">
+      Powered by 
+      <a href="https://hexo.io/" target="_blank" rel="nofollow" class="footer-link">
+        hexo
+      </a> 
+      &copy; 2022
+    </p>
+  </div>
+</footer>
+      </div>
+    </div>
+  </body>
+</html>
