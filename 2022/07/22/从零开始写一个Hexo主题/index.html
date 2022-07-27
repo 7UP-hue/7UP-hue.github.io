@@ -6,6 +6,8 @@
   <title>
     Blog:7UP-hue
   </title>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+  </script>
   
 <link rel="stylesheet" href="https://7up-hue.github.io/css/style.css">
 
@@ -15,6 +17,10 @@
   
 <script src="https://7up-hue.github.io/js/prism.js"></script>
 
+  
+<script src="https://7up-hue.github.io/js/app.js"></script>
+
+  <script src="https://kit.fontawesome.com/487be84f99.js" crossorigin="anonymous"></script>
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 
@@ -329,7 +335,11 @@
 <p>更改后<br>这时我们再运行<code>hexo clean</code>，<code>hexo g</code>，<code>hexo s</code>重启项目即可看到代码高亮成功</p>
 <p>参考文章：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/smileyan9/article/details/124333810">https://blog.csdn.net/smileyan9/article/details/124333810</a><br><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/hexodocument/hexodocument-6m483cn4.html">https://www.w3cschool.cn/hexodocument/hexodocument-6m483cn4.html</a></p>
 <h4 id="部署时遇到的坑"><a href="#部署时遇到的坑" class="headerlink" title="部署时遇到的坑"></a>部署时遇到的坑</h4><h4 id="关于链接"><a href="#关于链接" class="headerlink" title="关于链接"></a>关于链接</h4><p>在本地运行时，我的<code>&lt;a&gt;&lt;/a&gt;</code>链接默认都是在当前窗口打开，但是部署到github上后，它们就变成了在新窗口打开链接<br>因此需要手动给每个<code>a</code>标签设置<code>target=&quot;_self</code></p>
-
+<h4 id="关于图标"><a href="#关于图标" class="headerlink" title="关于图标"></a>关于图标</h4><p>增加一些图标让你的网站更好看趴~<br>这里我选择的是<a target="_blank" rel="noopener" href="https://fontawesome.com/">Font Awesome</a><br>注册账户并登录，在你的<code>head.ejs</code>文件中加上</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://kit.fontawesome.com/487be84f99.js"</span> crossorigin<span class="token operator">=</span><span class="token string">"anonymous"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这样就可以选择你喜欢的图标然后使用啦<br>示例</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- .ejs文件 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa-solid fa-angle-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
   </div>
 </article>
 
@@ -339,7 +349,7 @@
   <div class="f-center">
     <p class="author">
       Theme is 
-      <a href="/" target="_blank" class="footer-link" target="_self">
+      <a href="/" target="_blank" class="footer-link">
         light
       </a> 
       by 
@@ -357,6 +367,7 @@
   </div>
 </footer>
       </div>
+      <div class="scroll-top scroll-top-show"><i class="fa-solid fa-circle-arrow-up"></i></div>
     </div>
   </body>
 </html>
