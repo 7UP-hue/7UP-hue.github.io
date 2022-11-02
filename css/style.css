@@ -72,19 +72,35 @@ body {
 a {
   text-decoration: none;
 }
-.menu-item-link,
-.logo {
-  color: #666;
+.menu {
+  --primary-color: #666;
+  --secondary-color: #30ad91;
+  display: flex;
 }
-.menu-item-link:hover,
 .logo {
   color: #30ad91;
 }
-.menu {
+.menu-item-link {
   display: flex;
+  color: var(--primary-color);
+  padding: 6px 1em 3px;
+  overflow: hidden;
+}
+.menu-item-link span {
+  transition: all 0.3s;
+  position: relative;
+}
+.menu-item-link:hover span {
+  transform: translateY(-130%);
+}
+.menu-item-link span::before {
+  position: absolute;
+  content: attr(data-text);
+  transform: translateY(130%);
+  color: var(--secondary-color);
+  transition: all 0.3s;
 }
 .menu li {
-  margin-left: 10px;
   font-size: 16px;
 }
 li {
@@ -100,9 +116,10 @@ li {
   margin-bottom: 20px;
 }
 .post {
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 4px 4px #ddd;
   margin-bottom: 30px;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 20px;
   background: #fff;
   transition: all 0.5s;
@@ -125,14 +142,17 @@ li {
   margin: 0;
 }
 .page-tags {
-  margin-top: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
   font-size: 16px;
 }
 .tag-items {
   padding: 2px 7px;
-  background-color: #e76b68;
-  margin-right: 5px;
-  color: #fff;
+  background-color: #d8ece3;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #999;
   border-radius: 3px;
 }
 .post-header {
@@ -141,14 +161,19 @@ li {
 }
 .read-all {
   font-size: 14px;
-  padding: 3px 8px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0px 8px;
   border: 1px solid #999;
   border-radius: 3px;
   transition: all 0.5s;
 }
 .read-all:hover {
-  background-color: #eee;
-  border-bottom-color: #e76b68;
+  background-color: #54bba4;
+  border: 1px solid #54bba4;
+}
+.read-all:hover a {
+  color: #fff;
 }
 .show-sth {
   height: 100vh;
@@ -236,22 +261,20 @@ li {
     opacity: 1;
   }
 }
-.footer {
-  background-color: #cbcbcb;
-}
 .f-center {
   max-width: 974px;
   margin: 0 auto;
   padding-top: 5px;
   padding-bottom: 5px;
-  color: #fff;
+  color: #666;
   font-size: 16px;
+  text-align: center;
 }
 .footer-link {
   color: #258fb8;
 }
 .footer-link:hover {
-  color: #fff;
+  color: #30ad91;
 }
 .archive {
   padding: 20px;
