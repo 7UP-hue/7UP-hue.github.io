@@ -47,9 +47,8 @@ body {
   cursor: pointer;
 }
 .scroll-top:hover {
-  font-size: 40px;
-  right: 46px;
-  bottom: 35px;
+  transform: scale(1.3);
+  color: #3dd9b6;
 }
 .header {
   height: 60px;
@@ -169,11 +168,10 @@ li {
   transition: all 0.5s;
 }
 .read-all:hover {
-  background-color: #54bba4;
   border: 1px solid #54bba4;
 }
 .read-all:hover a {
-  color: #fff;
+  color: #54bba4;
 }
 .show-sth {
   height: 100vh;
@@ -540,5 +538,41 @@ li {
   margin-bottom: 20px;
   background: #fff;
   border-radius: 5px;
+  box-shadow: 0px 2px 4px 4px #ddd;
+}
+.aside-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.5s;
   padding: 10px;
+}
+.aside-title:hover {
+  color: #2092ec;
+}
+.aside-content {
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #666;
+  padding-bottom: 10px;
+}
+.aside-item-name {
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 3px 0 3px 10px;
+}
+.aside-item-name:hover {
+  background: #f4f4f4;
+  color: #44d7b6;
+}
+.aside-item-name:hover::before {
+  width: 0.125rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background: #44d7b6;
 }

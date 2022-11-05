@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">    
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">    
+  <title>
+    Blog:7UP-hue
+  </title>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/prism.css">
+ 
+  
+<script src="/js/prism.js"></script>
+
+  
+<script src="/js/app.js"></script>
+
+  <script src="https://kit.fontawesome.com/487be84f99.js" crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+
+
+  <body>
+    <div class="container">
+      <div class="layout-header">
+        
+
+  <header class="header header-last">
+
+    <div class="title">
+      <a href="/" class="logo" target="_self">
+        <span>Blog:7UP-hue</span>
+      </a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/#main" class="menu-item-link" target="_self">
+              <span data-text="主页">主页</span>
+            </a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link" target="_self">
+              <span data-text="归档">归档</span>
+            </a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/categories" class="menu-item-link" target="_self">
+              <span data-text="分类">分类</span>
+            </a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/tags" class="menu-item-link" target="_self">
+              <span data-text="标签">标签</span>
+            </a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/about" class="menu-item-link" target="_self">
+              <span data-text="关于">关于</span>
+            </a>
+          </li>
+         
+      </ul>
+    </nav>
+    <div></div>
+  </header>
+
+      </div>
+      <div class="layout-body">
+        <article class="post posts">
+  <div class="post-title">
+    <h2 class="title">
+      图片上传及图片压缩
+    </h2>
+  </div>
+  <div class="post-meta">
+    <span class="post-time">
+      2022-11-05
+    </span>
+  </div>
+  <div class="post-content">
+    <p>实现多张图片压缩及上传</p>
+<span id="more"></span>
+
+<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>表单内容中包含图片（可能多张），采取方法是先请求多次将图片上传，将图片上传后返回的链接放到表单请求体中，再提交表单内容。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用Promise.all将图片全部上传之后再提交表单</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> promises <span class="token operator">=</span> imageList<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">it</span> <span class="token operator">=></span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">)</span>
+Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>promises<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">res</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  postRequest<span class="token punctuation">.</span>images <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VITE_APP_BASE_URL</span> val<span class="token punctuation">.</span>data<span class="token punctuation">.</span>url
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token function">postExposure</span><span class="token punctuation">(</span>postRequest<span class="token punctuation">)</span> <span class="token comment">//提交表单请求</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Toast<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'发布成功！'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">else</span> Toast<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token string">'发布失败！'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>经过了一番波折，解决了图片上传的问题后，考虑到图片大小，决定先上传再压缩。<br>经过一番比较，决定使用<a href="https://github.com/fengyuanchen/compressorjs">compressorjs</a>这个库。<del>（别问为啥不自己写，问就是折腾了好久没折腾出来）</del></p>
+<h4 id="compressorjs的基本使用"><a href="#compressorjs的基本使用" class="headerlink" title="compressorjs的基本使用"></a><code>compressorjs</code>的基本使用</h4><h5 id="install"><a href="#install" class="headerlink" title="install"></a>install</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> compressorjs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> Compress <span class="token keyword">from</span> <span class="token string">'compressorjs'</span>
+<span class="token keyword">new</span> <span class="token class-name">Compressor</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">quality</span><span class="token operator">:</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token comment">//图片压缩比例，取值范围为0~1</span>
+  <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> result<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//上传图片请求 示例，使用时替换成自己的上传请求即可</span>
+    axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/post/upload'</span><span class="token punctuation">,</span> formData<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'上传成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token function">error</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过之前自己写压缩图片方法过程中对图片压缩的一些了解，我知道这个压缩图片方法是异步的。这意味着我不能直接像下面这样将它放到我之前的代码中</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> promises <span class="token operator">=</span> imageList<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">it</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">new</span> <span class="token class-name">Compressor</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span>file<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">quality</span><span class="token operator">:</span> <span class="token number">0.6</span><span class="token punctuation">,</span>
+    <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> result<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样的写法明显是错误的<del>（然而第一次尝试的我并不知道，因此踩了一次坑）</del><br>由于此压缩过程是异步的，因此<code>promises</code>中全为<code>undefined</code>。</p>
+<p>经过了一番思索，最终我将代码改成了这样</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/** 压缩图片 */</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">compressImage</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">new</span> <span class="token class-name">Compressor</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">quality</span><span class="token operator">:</span> <span class="token number">0.6</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">convertTypes</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'image/png'</span><span class="token punctuation">,</span> <span class="token string">'image/jpg'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">convertSize</span><span class="token operator">:</span> <span class="token number">1000000</span><span class="token punctuation">,</span>
+      <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token function">error</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/** 发布 */</span>
+<span class="token keyword">function</span> <span class="token function">onPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> promises <span class="token operator">=</span> imageList<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>val<span class="token punctuation">.</span>file<span class="token punctuation">.</span>size <span class="token operator">&lt;=</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">//小于1MB时不压缩直接上传</span>
+      <span class="token keyword">return</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">compressImage</span><span class="token punctuation">(</span>va file<span class="token punctuation">)</span>
+      <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> resul name<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>promises<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">res</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    postRequest<span class="token punctuation">.</span>images <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> <span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VITE_APP_BASE_URL</span> val<span class="token punctuation">.</span>data<span class="token punctuation">.</span>url
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token function">postExposure</span><span class="token punctuation">(</span>postRequest<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      Toast<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'发布成功！'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">else</span> Toast<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token string">'发布失败！'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>到此，总算是解决了压缩多张图片并上传的问题。<br>但是，其实这里还存在一些问题，比如没有处理图片上传失败的情况。需要根据情况改进~</p>
+
+  </div>
+</article>
+
+      </div>
+      <div class="layout-footer">
+        <footer class="footer">
+  <div class="f-center">
+    <p class="author">
+      Theme is 
+      <a href="/" target="_blank" class="footer-link">
+        light
+      </a> 
+      by 
+      <a href="https://github.com/7UP-hue" target="_blank" class="footer-link">
+        7UP-hue
+      </a>
+    </p>    
+    <p class="powered">
+      Powered by 
+      <a href="https://hexo.io/" target="_blank" rel="nofollow" class="footer-link">
+        hexo
+      </a> 
+      &copy; 2022
+    </p>
+  </div>
+</footer>
+      </div>
+      <div class="scroll-top scroll-top-show"><i class="fa-solid fa-circle-arrow-up"></i></div>
+    </div>
+  </body>
+</html>

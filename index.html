@@ -151,36 +151,35 @@
 </div>
 <script>
   const content = 'Live a good life meet slowly';
-  var delay = 0.2;
   var spans = document.querySelectorAll(".title-rase-in span")
   spans.forEach((item, index) => {
-    item.style.animationDelay = delay + Math.abs(index - 13)*0.05 + 's';
+    item.style.animationDelay = Math.abs(index - 13)*0.05 + 's';
   })
 </script>
 <div id="main" class="index-continer" style="display: flex; justify-content: space-between; padding-top: 60px">
   <div style="width: 20%"><section>
   <div class="aside">
     <div class="aside-item">
-      <span>分类</span>
-      <ul class="post-archive category">
+      <div class="aside-title"><i class="fa-regular fa-folder-open" style="margin-right: 10px"></i>文章分类</div>
+      <div class="aside-content">
         
           <div class="aside-item-name">
             JavaScript学习
           </div>
         
           <div class="aside-item-name">
-            Blogs
-          </div>
-        
-          <div class="aside-item-name">
             Tech
           </div>
         
-      </ul>
+          <div class="aside-item-name">
+            Blogs
+          </div>
+        
+      </div>
     </div>
     <div class="aside-item">
-      <span>标签</span>
-      <ul class="post-archive category">
+      <div class="aside-title"><i class="fa-solid fa-clipboard" style="margin-right: 10px"></i>标签</div>
+      <div class="aside-content">
         
           <div class="aside-item-name">
             JavaScript
@@ -194,11 +193,41 @@
             CSS
           </div>
         
-      </ul>
+      </div>
     </div>
   </div>
 </section></div>
   <div style="width: 80%"><section class="posts">
+  
+    <article class="post">
+      <div class="post-header">
+        <div class="post-name">
+          <a class="post-title-link" href="/2022/11/05/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8F%8A%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" target="_self">
+            图片上传及图片压缩
+          </a>
+        </div>
+        <span class="read-all">
+          <a class="post-title-link" href="/2022/11/05/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8F%8A%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" target="_self">
+            阅读全文>
+          </a>
+        </span>
+      </div>
+      <div class="post-meta">
+        <span class="post-time">
+          2022-11-05
+        </span>
+      </div>
+      <div class="post-excerpt">
+        <p>实现多张图片压缩及上传</p>
+      </div>
+      <div class="page-tags">
+        
+          <span class="tag-items">
+            JavaScript
+          </span>
+        
+      </div>
+    </article>
   
     <article class="post">
       <div class="post-header">
