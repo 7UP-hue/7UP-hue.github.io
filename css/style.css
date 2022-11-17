@@ -67,6 +67,7 @@ body {
   width: 100%;
   z-index: 10;
   display: none;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -319,54 +320,63 @@ li {
   margin-left: -30px;
   transition: all 0.7s;
 }
-.scroll-down:hover {
-  bottom: 20px;
-}
 .scroll-down-effects {
   animation: scroll-down-effect 2s infinite;
 }
 @-moz-keyframes scroll-down-effect {
   0% {
     opacity: 1;
+    translate: 0 0;
   }
   50% {
     opacity: 0.4;
+    translate: 0 -15px;
   }
   100% {
     opacity: 1;
+    translate: 0 0;
   }
 }
 @-webkit-keyframes scroll-down-effect {
   0% {
     opacity: 1;
+    translate: 0 0;
   }
   50% {
     opacity: 0.4;
+    translate: 0 -15px;
   }
   100% {
     opacity: 1;
+    translate: 0 0;
   }
 }
 @-o-keyframes scroll-down-effect {
   0% {
     opacity: 1;
+    translate: 0 0;
   }
   50% {
     opacity: 0.4;
+    translate: 0 -15px;
   }
   100% {
     opacity: 1;
+    translate: 0 0;
   }
 }
 @keyframes scroll-down-effect {
   0% {
     opacity: 1;
+    translate: 0 0;
   }
   50% {
     opacity: 0.4;
+    translate: 0 -15px;
   }
   100% {
     opacity: 1;
+    translate: 0 0;
   }
 }
 .f-center {
@@ -562,6 +572,8 @@ li {
   cursor: pointer;
   transition: 0.3s;
   padding: 3px 0 3px 10px;
+  display: block;
+  color: #666;
 }
 .aside-item-name:hover {
   background: #f4f4f4;
@@ -575,4 +587,31 @@ li {
   left: 0;
   content: "";
   background: #44d7b6;
+}
+.self-intro {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.self-intro .avatar {
+  border-radius: 50%;
+}
+.self-intro .self-name {
+  color: #666;
+  font-weight: 700;
+  margin-top: 10px;
+  font-family: Comic Sans MS, Helvetica Neue, Microsoft Yahei, -apple-system, sans-serif;
+  cursor: pointer;
+}
+.self-intro .self-icon {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px 0 20px;
+}
+.self-intro .self-link {
+  color: #666;
+  transition: all 0.3s;
+}
+.self-intro .self-link:hover {
+  color: #44d7b6;
 }

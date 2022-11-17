@@ -73,7 +73,6 @@
          
       </ul>
     </nav>
-    <div></div>
   </header>
 
       </div>
@@ -103,15 +102,18 @@
 <span class="token keyword">function</span> <span class="token function">sum</span> <span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-在代码开始执行之前，解析器会将函数声明提到源代码的顶部，因此，即使声明函数的代码在调用它的代码的后面，也能正确执行。而如果在上面的例子中把函数声明换成函数表达式则会在执行期间导致错误<h4 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h4>因为ECMAScript中的函数本身就是变量，所以函数也可以作为值来使用。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">com</span><span class="token punctuation">(</span><span class="token parameter">propertyName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+在代码开始执行之前，解析器会将函数声明提到源代码的顶部，因此，即使声明函数的代码在调用它的代码的后面，也能正确执行。而如果在上面的例子中把函数声明换成函数表达式则会在执行期间导致错误</li>
+</ul>
+<h4 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h4><p>因为ECMAScript中的函数本身就是变量，所以函数也可以作为值来使用。<br>  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">com</span><span class="token punctuation">(</span><span class="token parameter">propertyName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">object1<span class="token punctuation">,</span> object2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// object1[propertyName] 等价于 object1.propertyName</span>
     <span class="token keyword">var</span> value1 <span class="token operator">=</span> object1<span class="token punctuation">[</span>propertyName<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">var</span> value2 <span class="token operator">=</span> object2<span class="token punctuation">[</span>propertyName<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> value1 <span class="token operator">></span> value2<span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-这样我们就自定义了一个排序规则，可以将这个规则作为参数传给sort函数<h4 id="函数内部属性"><a href="#函数内部属性" class="headerlink" title="函数内部属性"></a>函数内部属性</h4>函数内部有两个特殊的对象：arguments和this</li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>  这样我们就自定义了一个排序规则，可以将这个规则作为参数传给sort函数</p>
+<h4 id="函数内部属性"><a href="#函数内部属性" class="headerlink" title="函数内部属性"></a>函数内部属性</h4><p>函数内部有两个特殊的对象：arguments和this</p>
+<ul>
 <li>arguments<br>一个类数组对象，包含着传入函数中的所有参数。</li>
 <li>this<br>this引用的是函数执行的环境对象——或者也可以说是this值<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">window<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">"blue"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
@@ -120,8 +122,10 @@
 <span class="token punctuation">&#125;</span>
 <span class="token function">sayColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//red</span>
 o<span class="token punctuation">.</span>sayColor <span class="token operator">=</span> sayColor<span class="token punctuation">;</span>
-o<span class="token punctuation">.</span><span class="token function">sayColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//blue</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h4>每个函数都包含两个属性：length和prototype</li>
+o<span class="token punctuation">.</span><span class="token function">sayColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//blue</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h4><p>每个函数都包含两个属性：length和prototype</p>
+<ul>
 <li>length<br>表示函数希望接受手的命名参数的个数</li>
 <li>prototype<br>对于ES中的引用类型而言，prototype是保存他们所有实例方法的真正所在</li>
 </ul>
