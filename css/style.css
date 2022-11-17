@@ -593,25 +593,25 @@ li {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.self-intro .avatar {
+.avatar {
   border-radius: 50%;
 }
-.self-intro .self-name {
+.self-name {
   color: #666;
   font-weight: 700;
   margin-top: 10px;
   font-family: Comic Sans MS, Helvetica Neue, Microsoft Yahei, -apple-system, sans-serif;
   cursor: pointer;
 }
-.self-intro .self-icon {
+.self-icon {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px 0 20px;
 }
-.self-intro .self-link {
+.self-link {
   color: #666;
   transition: all 0.3s;
 }
-.self-intro .self-link:hover {
+.self-link:hover {
   color: #44d7b6;
 }
