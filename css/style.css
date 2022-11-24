@@ -130,7 +130,6 @@ li {
   padding: 20px;
   border-radius: 5px;
   min-height: 65vh;
-  margin-bottom: 20px;
 }
 .post {
   border: 1px solid #ddd;
@@ -722,4 +721,55 @@ li {
 }
 .toc-li-active>a {
   color: #44d7b6 !important;
+}
+.page-nav {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.page-nav .next {
+  float: right;
+  padding: 0px 12px 0px 15px;
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+.page-nav .prev {
+  float: left;
+  padding: 0px 15px 0px 12px;
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+.page-nav .current {
+  background: #44d7b6;
+  color: #fff;
+  border: 1px solid #44d7b6;
+}
+.page-number {
+  font-size: 1.5rem;
+  color: #666;
+  margin-left: 10px;
+  padding: 3px 13px 3px 13px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.page-number:hover {
+  background: #44d7b6;
+  color: #fff;
+  border: 1px solid #44d7b6;
+}
+.extend {
+  font-size: 16px;
+  color: #777;
+  font-weight: 600;
+  border-radius: 5px;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background: #fff;
+  box-shadow: 3px 3px 3px #ccc;
+  transition: all 0.5s;
+}
+.extend:hover {
+  color: #44d7b6;
+  box-shadow: 5px 5px 10px 1px #ccc;
 }
