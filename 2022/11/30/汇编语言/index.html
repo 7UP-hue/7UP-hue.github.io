@@ -90,7 +90,221 @@
     </span>
   </div>
   <div class="post-content">
-    
+    <h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><ol>
+<li>简答</li>
+<li>计算</li>
+<li>程序填空</li>
+<li>程序题</li>
+</ol>
+<h2 id="考试重点"><a href="#考试重点" class="headerlink" title="考试重点"></a>考试重点</h2><ul>
+<li>第一章 汇编与机器之间的联系</li>
+<li>第二章 计算机组成 重点是寄存器</li>
+<li>第三章 完成一个程序的步骤，每步的操作</li>
+<li>第四章 寻址方式有哪些，每一个寻址方式是怎么操作</li>
+<li>第五章 全部</li>
+<li>第六章 伪指令的结构，汇编程序框架，不要求子程序，有类似6.1的题目</li>
+<li>第七章 3个编程程序</li>
+<li>考试大纲：汇编语言的组成，编译，实现步骤，寄存器的组成，作用，功能调用，寻址方式，指令系统，伪指令，内存分配，分支和循环程序设计。</li>
+</ul>
+<h2 id="第一章-汇编语言基础知识"><a href="#第一章-汇编语言基础知识" class="headerlink" title="第一章 汇编语言基础知识"></a>第一章 汇编语言基础知识</h2><h3 id="机器语言与汇编语言"><a href="#机器语言与汇编语言" class="headerlink" title="机器语言与汇编语言"></a>机器语言与汇编语言</h3><p>机器语言：计算机硬件直接识别的程序设计语言。构成这种程序的是机器指令，机器指令是用二进制编码的指令，即编码中只含0或1。机器语言被称为第一代语言，不仅复杂难记，而且还依赖于具体的机型。</p>
+<p>汇编语言：汇编语言是一种面向机器的用符号表示的程序设计语言，所以也叫符号语言。和机器语言不同的是，汇编语言用直观、便于记忆和理解的英文单词符号或缩写符号来表示指令和数据变量。汇编语言被称为第二代语言。</p>
+<p>尽管用汇编语言编写的程序要比机器代码更容易理解，但每条汇编语言指令均对应一条机器指令，因为与机器语言并没有本质区别，因此汇编语言仍然属于面向机器的低级语言。</p>
+<h3 id="汇编语言的组成"><a href="#汇编语言的组成" class="headerlink" title="汇编语言的组成"></a>汇编语言的组成</h3><ol>
+<li>汇编指令：机器码助记符，有对应的机器码，它是汇编语言的核心。</li>
+<li>伪指令：没有对应的机器码，由编译器执行，计算机并不执行。</li>
+<li>其他符号：如+、-、*、&#x2F;等，由编译器识别，没有对应的机器码。</li>
+</ol>
+<h2 id="第二章-计算机基本原理"><a href="#第二章-计算机基本原理" class="headerlink" title="第二章 计算机基本原理"></a>第二章 计算机基本原理</h2><h3 id="计算机系统组成"><a href="#计算机系统组成" class="headerlink" title="计算机系统组成"></a>计算机系统组成</h3><ul>
+<li>计算机的基本工作原理是存储程序和程序控制</li>
+<li>冯诺伊曼原理的计算机结构：<ul>
+<li>中央处理器（CPU）或叫微处理器（MPU），主要包括运算器和控制器。运算器执行指令，控制器负责计算机的控制，负责从主存储器取指令，对指令进行译码，发出访问主存储器或者I&#x2F;O设备接口的控制信号，完成程序的要求。CPU是计算机结构中最核心的部件，指令都是在这里执行的。</li>
+<li>存储器是计算机记忆部件，以二进制形式存放程序和数据。</li>
+<li>输入&#x2F;输出（I&#x2F;O）子系统包括大容量存储器（如硬盘）和其他外设，如显示器、键盘、打印机、鼠标等</li>
+<li>系统总线连接CPU、主存储器、和I&#x2F;O子系统三大部分，用以完成各部分的数据交换。系统总线包括数据总线、地址总线和控制总线。</li>
+</ul>
+</li>
+</ul>
+<p><img src="E:\期末复习\汇编\assets\image-20221128192147709.png" alt="image-20221128192147709"></p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ol>
+<li><p>通用数据寄存器</p>
+<p>AX、BX、CX、DX这4个寄存器通常用来存放一般性数据，有时候也可以存放地址，被称为通用数据寄存器。</p>
+<ul>
+<li>AX：累加器，运算时较多使用这个寄存器，有些指令规定必须使用它。</li>
+<li>BX：基址寄存器，除了存放数据，它经常用来存放一段内容的起始偏移地址。</li>
+<li>CX：计数寄存器，除了存放数据，它经常用来存放重复操作的次数。</li>
+<li>DX：数据寄存器，除了存放数据，它有时用来存放32位数据的高16位。</li>
+</ul>
+</li>
+<li><p>地址寄存器</p>
+<p>主要作用是存放数据所在偏移地址，也可以存放数据。它们不能再拆分使用</p>
+<ul>
+<li>SP：堆栈指针，这是一个专用的寄存器，存放堆栈栈顶的偏移地址。</li>
+<li>BP：基址指针，可以用来存放内存中数据的偏移地址。</li>
+<li>SI：源变址寄存器，它经常用来存放内存中源数据区的偏移地址，所谓变址寄存器，是指在某些指令下它可以自动地递增或递减其中的值。</li>
+<li>DI：目的地址寄存器，它经常用来存放内存中目的数据区的偏移地址，并在某些指令作用下可以自动的递增或递减其中的值。</li>
+</ul>
+</li>
+<li><p>段寄存器</p>
+<p>用来存放4个段的段基址</p>
+<ul>
+<li>CS：代码段寄存器，用来存放当前正在执行的程序段的段基址。</li>
+<li>SS：堆栈段寄存器，用来存放堆栈段的段基址。</li>
+<li>DS：数据段寄存器，用来存放数据段的段基址。</li>
+<li>ES：附加段寄存器，用来存放另一个数据段的段基址。</li>
+</ul>
+</li>
+<li><p>指令指针寄存器</p>
+<p>IP：指令指针寄存器，存放即将执行指令的偏移地址。</p>
+</li>
+<li><p>标志寄存器</p>
+<p>FLAGS：存放CPU的两类状态。</p>
+<p>状态标志：反映处理器当前的状态，如有无溢出、有无进位等。状态标志有６个：CF、PF、AF、ZF、SF和OF。</p>
+<p>控制标志：用来控制CPU的工作方式，如是否响应可屏蔽终端等。控制标志有３个：TF、IF和DF。</p>
+</li>
+</ol>
+<img src="E:\QQ&&weixin\qq\MobileFile\IMG_20221129_122957.jpg" alt="IMG_20221129_122957" style="zoom: 33%;" />
+
+<h2 id="第三章-汇编语言程序实例及上机操作"><a href="#第三章-汇编语言程序实例及上机操作" class="headerlink" title="第三章 汇编语言程序实例及上机操作"></a>第三章 汇编语言程序实例及上机操作</h2><h3 id="完成一个程序的步骤"><a href="#完成一个程序的步骤" class="headerlink" title="完成一个程序的步骤"></a>完成一个程序的步骤</h3><p>汇编语言从设计到形成可执行程序文件，在计算机上的操作分为三步：编辑、汇编、连接。</p>
+<ul>
+<li>使用编辑程序编辑源程序文件（.asm）</li>
+<li>使用汇编程序（MASM）将源程序文件（.asm）汇编成目标文件（.obj）</li>
+<li>使用连接程序（LINK），将目标文件（.obj）连接成可执行文件（.EXE）</li>
+<li>使用调试程序（DEBUG），调试可执行文件</li>
+</ul>
+<p><img src="C:\Users\程柒\AppData\Roaming\Typora\typora-user-images\image-20221129130220897.png" alt="image-20221129130220897"></p>
+<p>因此建立汇编语言程序至少要有以下几个文件：</p>
+<ul>
+<li>编辑程序，如EDIT.EXE；</li>
+<li>汇编程序，如MASM.EXE；</li>
+<li>连接程序，如LINK.EXE；</li>
+<li>调试程序，如EDBUG.EXE；</li>
+</ul>
+<p>一个汇编源程序从写出到最终执行，需要经过如下几个步骤：</p>
+<ol>
+<li><p>编写汇编源程序：</p>
+<p>编辑ASM源程序文件就是在机器上写程序，大多数文字编辑软件都可用来输入和修改汇编语言源程序。</p>
+</li>
+<li><p>对源程序进行汇编和连接：</p>
+<ul>
+<li>汇编：汇编程序的作用是把汇编语言源程序翻译成为机器代码，产生二进制格式的目标文件（Object File）</li>
+<li>连接：连接就是使用连接程序LINK把目标文件（OBJ）转换为可执行的EXE文件。</li>
+</ul>
+</li>
+<li><p>执行或调试可执行文件中的程序</p>
+</li>
+</ol>
+<h2 id="第四章-操作数的寻址方式"><a href="#第四章-操作数的寻址方式" class="headerlink" title="第四章 操作数的寻址方式"></a>第四章 操作数的寻址方式</h2><p>所谓寻址方式就是指令中寻找操作数的方式，同时寻址方式也规定了指令的结构和格式。</p>
+<h3 id="立即寻址方式"><a href="#立即寻址方式" class="headerlink" title="立即寻址方式"></a>立即寻址方式</h3><p>所要找的操作数字何解写在指令中，这种操作数成为立即数。立即数就在指令中（紧跟在操作码之后），这种寻址方式称为立即寻址方式。</p>
+<p>例1：</p>
+<p>​	MOV AL, 6H   执行完之后AL&#x3D;06H</p>
+<p>例2：</p>
+<p>​	MOV AX, 12AFH   执行完之后AX&#x3D;12AFH，即AH&#x3D;12H，AL&#x3D;AFH，遵循高位数据在高地址的规定。</p>
+<h3 id="寄存器寻址方式"><a href="#寄存器寻址方式" class="headerlink" title="寄存器寻址方式"></a>寄存器寻址方式</h3><p>操作数就是寄存器中的值，这种寻址方式称为寄存器寻址方式。指令中给出寄存器名。</p>
+<p>例1 MOV AX, BX  执行后AX&#x3D;BX，BX保持不变</p>
+<p>在寄存器寻址中，由于操作数在CPU内部的寄存器中，指令在执行时不需要访问内存，因而执行速度快。</p>
+<h3 id="直接寻址方式"><a href="#直接寻址方式" class="headerlink" title="直接寻址方式"></a>直接寻址方式</h3><p>操作数的有效地址就在指令中，这种寻址方式称为直接寻址方式。指令中直接给出了操作数的有效地址。</p>
+<p>指令形式如下：</p>
+<p>​	MOV AX, DS:[4050H]</p>
+<p>操作数的有效地址EA直接写在指令中，用方括号里的数值作为操作数的偏移地址（有效地址），操作数的段地址为数据段，由DS指出，即操作数本身存放在数据段中。</p>
+<p>操作数的物理地址&#x3D;（DS）*10H+EA</p>
+<h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p>操作数的有效地址EA就在寄存器中，这种寻址方式称为寄存器间接寻址。寄存器间接寻址方式与寄存器寻址方式不同，它不是把寄存器的内容作为操作数，而是把寄存器的内容作为操作数的地址。</p>
+<p>例：MOV AX，[BX]</p>
+<p>已知（DS）&#x3D;1500H，（BX）&#x3D;4580H</p>
+<p>则EA&#x3D;（BX）&#x3D;4580H，操作数的物理地址&#x3D;（DS）*10H+EA&#x3D;19580H</p>
+<p>若（19580H）&#x3D;2364H，则执行完之后（AX）&#x3D;2364H</p>
+<h3 id="寄存器相对寻址方式"><a href="#寄存器相对寻址方式" class="headerlink" title="寄存器相对寻址方式"></a>寄存器相对寻址方式</h3><p>操作数的有效地址EA是一个寄存器与位移量之和，这种寻址方式称为寄存器相对寻址。和寄存器间接寻址不同的是，有效地址EA的构成除了寄存器之外，还要加上位移量。</p>
+<p>例：MOV AX，TOP[SI]</p>
+<p>以上指令TOP为符号地址，即位移量。</p>
+<p>已知（DS）&#x3D;1500H，（SI）&#x3D;7310H，TOP&#x3D;25H，则</p>
+<p>有效地址EA&#x3D;（SI）+TOP&#x3D;7335H</p>
+<p>物理地址&#x3D;（DS）*10H+EA&#x3D;1C335H</p>
+<p>若（1C335H）&#x3D;3567H，则执行指令后：（AX）&#x3D;1567H</p>
+<h3 id="基址变址寻址方式"><a href="#基址变址寻址方式" class="headerlink" title="基址变址寻址方式"></a>基址变址寻址方式</h3><p>操作数的有效地址是一个基址寄存器和一个变址寄存器的内容之和，这种寻址方式称为基址变址寻址。允许使用的基址寄存器为BX和BP，变址寄存器为SI和DI。</p>
+<p>例：MOV AX，[BX+DI]</p>
+<p>已知（DS）&#x3D;2100H，（BX）&#x3D;0158H，（DI）&#x3D;10A5H，（221FD）&#x3D;34H，（221FE）&#x3D;95H，（AX）&#x3D;0FFFFH。则</p>
+<p>有效地址EA &#x3D; （BX）+（DI）＝11FDH</p>
+<p>物理地址 &#x3D; （DS）*10H+EA &#x3D; 221FDH</p>
+<p>执行后，（AX）&#x3D;9534H</p>
+<h3 id="相对基址变址寻址方式"><a href="#相对基址变址寻址方式" class="headerlink" title="相对基址变址寻址方式"></a>相对基址变址寻址方式</h3><p>操作数的有效地址是一个基址寄存器和一个变址寄存器以及一个位移量之和，这种寻址方式称为相对基址变址寻址。</p>
+<p>例：MOV AX，MAXK[BX][SI]</p>
+<p>有效地址EA &#x3D; MAXK + （BX）+（SI）;</p>
+<h3 id="寻址方式的有关问题"><a href="#寻址方式的有关问题" class="headerlink" title="寻址方式的有关问题"></a>寻址方式的有关问题</h3><ol>
+<li><p>双操作数寻址方式的规定：</p>
+<p>一条指令的源操作数和目的操作数<strong>不能同时用存储器方式</strong></p>
+<p>如：MOV BUF，[ BX ] 这条指令就是<strong>错误</strong>的</p>
+</li>
+<li><p>操作数的类型</p>
+<ul>
+<li><p>寄存器寻址方式中，操作数的类型由<strong>寄存器</strong>决定</p>
+</li>
+<li><p>立即数没有类型</p>
+</li>
+<li><p>不含变量的存储器方式所表示的操作数类型<strong>未知</strong></p>
+</li>
+<li><p>含变量的寻址方式对应的操作数类型就是<strong>变量的类型</strong></p>
+</li>
+</ul>
+</li>
+<li><p>双操作数的类型规定</p>
+<ul>
+<li>双操作数中至少应有一个的类型时明确的；</li>
+<li>若两个操作数的类型都明确，则两个的类型应相同。</li>
+</ul>
+</li>
+<li><p>段选择说明</p>
+<p>对于存储器方式：</p>
+<ul>
+<li><p>标明了段寄存器，OP在段寄存器指明的段中。否则：</p>
+</li>
+<li><p>若有变量，则是变量所在的段；否则</p>
+</li>
+<li><p>系统默认（V为常量时）</p>
+<p>对于[R]，R为BP，EBP，ESP时，是SS段。</p>
+<p>对于V[R*F],R为BP，EBP，ESP时，是SS段。</p>
+<p>对于V[]</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="第五章-常用指令系统"><a href="#第五章-常用指令系统" class="headerlink" title="第五章 常用指令系统"></a>第五章 常用指令系统</h2><p>每种计算机都有一组指令集供用户使用，这组指令集就称为计算机的指令系统。</p>
+<p>80x86汇编语言指令的一般格式为：</p>
+<p>[标号：]    指令助记符    [操作数]    [;注释]</p>
+<p>各部分的意义说明如下：</p>
+<ol>
+<li>标号：标号是一个符号地址，用来表示指令在内存中的位置，以便程序中其他指令能引用该指令。它通常作为转移指令的操作数，以表示转向的目标地址。当一条指令使用标号时，应加冒号“；”，不可省略。</li>
+<li>指令助记符：指令助记符表示指令名称，是指令功能的英文缩写。如“MOV”表示传送指令。</li>
+<li>操作数：操作数表示要操作的数据或数据所在的地址。</li>
+<li>注释：注释由分号“；”开始，为了使程序更容易理解而用来对指令的功能加以说明。</li>
+</ol>
+<h3 id="指令要求"><a href="#指令要求" class="headerlink" title="指令要求"></a>指令要求</h3><p>一般情况下，指令的共同要求：</p>
+<ol>
+<li>双操作数的操作数类型必须匹配</li>
+<li>目的操作数一定不能是立即操作数</li>
+<li>目的操作数和源操作数不能同时为存储器操作数。如果一个数在数据存储单元中，另一个一定要是立即  数和寄存器操作数。</li>
+</ol>
+<h3 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h3><ol>
+<li><p>通用数据传送指令</p>
+<ul>
+<li><p>MOV 传送</p>
+<p>例：MOV AX，2016H</p>
+</li>
+<li><p>PUSH 进栈</p>
+</li>
+<li><p>POP 出栈</p>
+</li>
+<li><p>XCHG 交换</p>
+</li>
+</ul>
+</li>
+<li><p>累加器专用传送指令</p>
+<ul>
+<li>IN（input）输入</li>
+<li>OUT（output）输出</li>
+<li>XLAT（translate）换码</li>
+</ul>
+</li>
+</ol>
+
   </div>
 </article>
 </div>
@@ -101,7 +315,7 @@
       <i class="fa-solid fa-list-ul toc-icon"></i>
       目录
     </div>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E9%A2%98%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">考试题型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">考试重点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">第一章 汇编语言基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80%E4%B8%8E%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-number">3.1.</span> <span class="toc-text">机器语言与汇编语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">3.2.</span> <span class="toc-text">汇编语言的组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">第二章 计算机基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="toc-number">4.1.</span> <span class="toc-text">计算机系统组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text">寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B%E5%8F%8A%E4%B8%8A%E6%9C%BA%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">第三章 汇编语言程序实例及上机操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.1.</span> <span class="toc-text">完成一个程序的步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9A%84%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">第四章 操作数的寻址方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">立即寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.2.</span> <span class="toc-text">寄存器寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.3.</span> <span class="toc-text">直接寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-number">6.4.</span> <span class="toc-text">寄存器间接寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%9B%B8%E5%AF%B9%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.5.</span> <span class="toc-text">寄存器相对寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%8F%98%E5%9D%80%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.6.</span> <span class="toc-text">基址变址寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E5%9F%BA%E5%9D%80%E5%8F%98%E5%9D%80%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.7.</span> <span class="toc-text">相对基址变址寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E7%9A%84%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-number">6.8.</span> <span class="toc-text">寻址方式的有关问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">第五章 常用指令系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E8%A6%81%E6%B1%82"><span class="toc-number">7.1.</span> <span class="toc-text">指令要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-number">7.2.</span> <span class="toc-text">数据传送指令</span></a></li></ol></li></ol>
   </div>
 </div></div>
 </div>
