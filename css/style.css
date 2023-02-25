@@ -27,7 +27,7 @@ body {
 .layout-body {
   padding-bottom: 100px;
   padding-top: 80px;
-  max-width: 1024px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 .layout-footer {
@@ -640,12 +640,12 @@ li {
   color: #44d7b6;
 }
 .toc-main {
-  margin-top: 40px;
-  position: fixed;
-  top: 60px;
-  right: 80px;
+  position: absolute;
+  top: 0;
+  right: 12em;
 }
 .toc-container {
+  position: fixed;
   background: #fff;
   padding: 20px;
   box-sizing: border-box;
@@ -711,6 +711,7 @@ li {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   transition: all 0.5s;
+  line-height: 30px;
 }
 .toc li a:hover {
   color: #44d7b6;
@@ -777,4 +778,35 @@ li {
 .extend:hover {
   color: #44d7b6;
   box-shadow: 5px 5px 10px 1px #ccc;
+}
+.index-continer {
+  position: relative;
+  padding-right: 12em;
+}
+.markdown-body {
+  background-image: linear-gradient(0deg, transparent 24%, rgba(201,195,195,0.329) 25%, rgba(209,201,201,0.05) 26%, transparent 27%, transparent 74%, rgba(209,204,204,0.185) 75%, rgba(180,176,176,0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(204,196,196,0.226) 25%, rgba(172,165,165,0.05) 26%, transparent 27%, transparent 74%, rgba(209,204,204,0.185) 75%, rgba(180,176,176,0.05) 76%, transparent 77%, transparent);
+  font-size: 15px;
+  line-height: 30px;
+  letter-spacing: 2px;
+  word-break: break-word;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+  background-color: #fff;
+  background-size: 50px 50px;
+  padding-bottom: 60px;
+  color: #383838;
+}
+.post-content li {
+  list-style: inherit;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin: 24px 0 12px;
+  color: #9268b9;
+}
+.post-content li::marker {
+  color: #a862ea;
 }
