@@ -42,7 +42,7 @@ body {
   bottom: 40px;
   right: 2%;
   color: #ccc;
-  font-size: 30px;
+  font-size: 1.875rem;
   transition: all 0.5s;
   display: none;
   cursor: pointer;
@@ -153,7 +153,7 @@ a {
   transition: all 0.3s;
 }
 .menu li {
-  font-size: 16px;
+  font-size: 1rem;
 }
 li {
   list-style: none;
@@ -212,11 +212,11 @@ li {
   color: #666;
 }
 .post-time {
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-top: 5px;
 }
 .post-excerpt {
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 5px;
 }
 .post-excerpt p {
@@ -242,9 +242,9 @@ li {
 }
 .read-all {
   font-size: 0.875rem;
-  height: 35px;
-  line-height: 35px;
-  padding: 0px 8px;
+  height: 2.15rem;
+  line-height: 2.15rem;
+  padding: 0px 0.5rem;
   border: 1px solid #999;
   border-radius: 3px;
   transition: all 0.5s;
@@ -393,7 +393,7 @@ li {
 .scroll-down {
   position: absolute;
   bottom: 10px;
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #ccc;
   padding-left: 30px;
   padding-right: 30px;
@@ -469,7 +469,7 @@ li {
   padding-top: 5px;
   padding-bottom: 5px;
   color: #666;
-  font-size: 16px;
+  font-size: 1rem;
   text-align: center;
 }
 .footer-link {
@@ -496,7 +496,7 @@ li {
   padding-top: 20px;
 }
 .archive-items {
-  font-size: 16px;
+  font-size: 1rem;
   margin-left: 30px;
   margin-top: 20px;
   color: #aaa;
@@ -507,19 +507,19 @@ li {
 }
 .post-title {
   color: #333;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .post-name {
   font-weight: 700;
   color: #777;
-  font-size: 22px;
+  font-size: 1.25rem;
   font-family: sans-serif;
 }
 .category {
   margin-top: 20px;
 }
 .post-date {
-  font-size: 16px;
+  font-size: 1rem;
   color: #aaa;
 }
 .post-item {
@@ -530,7 +530,7 @@ li {
 }
 .post-title-small {
   color: #aaa;
-  font-size: 16px;
+  font-size: 1rem;
   margin-left: 5px;
 }
 .post-title-small:hover {
@@ -626,6 +626,14 @@ li {
   }
 }
 @media screen and (max-width: 617px) {
+  html {
+    font-size: 12px;
+  }
+  .title-rase-in {
+    font-size: 1.875rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
   .index-aside {
     display: none;
   }
@@ -730,6 +738,9 @@ li {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-inline-start: 0;
+  }
+  ul {
+    padding-inline-start: 1.5rem;
   }
 }
 @media screen and (max-width: 824px) {
@@ -884,10 +895,10 @@ li {
 }
 .toc-container a {
   color: #666;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: Comic Sans MS, Helvetica Neue, Microsoft Yahei, -apple-system, sans-serif;
   transition: all 0.5s;
-  line-height: 30px;
+  line-height: 1.875rem;
 }
 .toc-child {
   margin-block-end: 0;
@@ -900,7 +911,7 @@ li {
 .toc-name {
   font-family: Comic Sans MS, Helvetica Neue, Microsoft Yahei, -apple-system, sans-serif;
   color: #333;
-  font-size: 18px;
+  font-size: 1.125rem;
   margin-bottom: 10px;
 }
 .toc-name .toc-icon {
@@ -935,7 +946,7 @@ li {
   font-size: 1.5rem;
   color: #666;
   margin-left: 10px;
-  padding: 3px 13px 3px 13px;
+  padding: 0.1875rem 0.8125rem 0.1875rem 0.8125rem;
   border: 1px solid #777;
   border-radius: 5px;
   transition: all 0.3s;
@@ -946,7 +957,7 @@ li {
   border: 1px solid #44d7b6;
 }
 .extend {
-  font-size: 16px;
+  font-size: 1rem;
   color: #777;
   font-weight: 600;
   border-radius: 5px;
@@ -966,7 +977,7 @@ li {
 }
 .markdown-body {
   background-image: linear-gradient(0deg, transparent 24%, rgba(201,195,195,0.329) 25%, rgba(209,201,201,0.05) 26%, transparent 27%, transparent 74%, rgba(209,204,204,0.185) 75%, rgba(180,176,176,0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(204,196,196,0.226) 25%, rgba(172,165,165,0.05) 26%, transparent 27%, transparent 74%, rgba(209,204,204,0.185) 75%, rgba(180,176,176,0.05) 76%, transparent 77%, transparent);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 30px;
   letter-spacing: 2px;
   word-break: break-word;
